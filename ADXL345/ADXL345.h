@@ -105,10 +105,13 @@ public:
     double gains[3];        // counts to Gs
     
     ADXL345();
-    void powerOn();
-    void readAccel(int* xyx);
-    void readAccel(int* x, int* y, int* z);
-    void get_Gxyz(double *xyz);
+    void init();
+    
+    void sample();   // take readings from the accelerometer
+    
+    int16_t getX();  // return X from the last sample
+    int16_t getY();  // return Y from the last sample
+    int16_t getZ();  // return Z from the last sample
     
     void setTapThreshold(int tapThreshold);
     int getTapThreshold();

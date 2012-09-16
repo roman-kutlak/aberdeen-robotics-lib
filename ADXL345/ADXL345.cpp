@@ -34,36 +34,33 @@ ADXL345::ADXL345() {
   gains[2] = 0.00349265;
 }
 
-void ADXL345::powerOn() {
-  Wire.begin();        // join i2c bus (address optional for master)
+void ADXL345::init() {
   //Turning on the ADXL345
   writeTo(ADXL345_POWER_CTL, 0);      
   writeTo(ADXL345_POWER_CTL, 16);
   writeTo(ADXL345_POWER_CTL, 8); 
 }
 
-// Reads the acceleration into three variable x, y and z
-void ADXL345::readAccel(int *xyz){
-  readAccel(xyz, xyz + 1, xyz + 2);
-}
-void ADXL345::readAccel(int *x, int *y, int *z) {
-  //read the acceleration data from the ADXL345
-  readFrom(ADXL345_DATAX0, TO_READ, _buff);
-  
-  // each axis reading comes in 10 bit resolution, ie 2 bytes.  Least Significat Byte first!!
-  // thus we are converting both bytes in to one int
-  *x = (((int)_buff[1]) << 8) | _buff[0];   
-  *y = (((int)_buff[3]) << 8) | _buff[2];
-  *z = (((int)_buff[5]) << 8) | _buff[4];
+void ADXL345::sample() {
+    readFrom(ADXL345_DATAX0, TO_READ, _buff);
 }
 
-void ADXL345::get_Gxyz(double *xyz){
-  int i;
-  int xyz_int[3];
-  readAccel(xyz_int);
-  for(i=0; i<3; i++){
-    xyz[i] = xyz_int[i] * gains[i];
-  }
+int16_t ADXL345::getX() {
+    // each axis reading comes in 10 bit resolution, ie 2 bytes. 
+    // Least Significat Byte first!!
+    // thus we are converting both bytes in to one int
+    int16_t x = (((int)_buff[1]) << 8) | _buff[0];
+    return x;
+}
+
+int16_t ADXL345::getY() {
+    int16_t y = (((int)_buff[3]) << 8) | _buff[2];
+    return y;
+}
+
+int16_t ADXL345::getZ() {
+    int16_t z = (((int)_buff[5]) << 8) | _buff[4];
+    return z;
 }
 
 // Writes val to address register on device
