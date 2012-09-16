@@ -208,5 +208,9 @@ private:
     uint8_t _buff[6] ;    //6 uint8_ts buffer for saving data read from the device
 };
 void print_uint8_t(uint8_t val);
+
+
+extern ADXL345 Accel;
+
 #endif
 

@@ -1,0 +1,34 @@
+#######################################
+# Syntax Coloring Map For Wire
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+init	KEYWORD2
+sample	KEYWORD2
+getX	KEYWORD2
+getY	KEYWORD2
+getZ	KEYWORD2
+
+#######################################
+# Instances (KEYWORD2)
+#######################################
+
+Accel	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+ADXL345_DEVID	    LITERAL1
+ADXL345_RESERVED1	LITERAL1
+ADXL345_THRESH_TAP	LITERAL1
+ADXL345_OFSX	    LITERAL1
+ADXL345_OFSY	    LITERAL1
+ADXL345_OFSZ	    LITERAL1

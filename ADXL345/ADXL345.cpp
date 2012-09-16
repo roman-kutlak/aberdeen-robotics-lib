@@ -609,3 +609,5 @@ void ADXL345::printByte(uint8_t val){
     Serial.print(val >> i & 1, BIN);
   }
 }
+
+ADXL345 Accel;
