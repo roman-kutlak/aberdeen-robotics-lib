@@ -1,0 +1,1 @@
+This project is an Arduino library for CS robotics course at the University of Aberdeen. It is a set of c++ classes that simplify access to the sensors used in the class (e.g., gyroscope, accelerometer, wifi, etc.).
